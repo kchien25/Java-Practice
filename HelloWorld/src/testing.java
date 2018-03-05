@@ -1,48 +1,44 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class testing {
-
     public static void main(String[] args) {
-        System.out.println("c.");
-        int k = 1;
-        while (k <= 2) {
-            // this means everything inside will repeat twice
-            j = 1;
-            while (j <= 1) {
-                // this means everything inside will repeat three times
-                int i = 1;
-                while (i <= 4) {
-                    // this means everything here will repeat four times
-                    System.out.print("*");
-                    i++;
-                }
-                System.out.print("!");
-                j++;
-            }
-            System.out.println();
-            k++;
+        caeserify("THISISSOMEREALLYGREATTEXT", 3);
+    }
+    public static String caeserify(String s, int key) {
+        String testAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String cryptoAlphabet = shiftAlphabet(key);
+        int length = s.length();
+        for (int i = 0; i < length; i++) {
+            int sIndex = testAlphabet.indexOf(s.charAt(i));
+            char cryptoChar = cryptoAlphabet.charAt(sIndex);
+            s.replace(s.charAt(i), cryptoChar);
         }
+        System.out.println(s);
+        return s;
+        // set index of the s letter to sindex
+        // set equivalent character of crypto char to cryptochar
+        // for every i in s.length(), replace 
+        // key amount of times
+    }
+
+    public static String shiftAlphabet(int shift) {
+        int start = 0;
+        if (shift < 0) {
+            start = (int) 'Z' + shift + 1;
+        } else {
+            start = 'A' + shift;
+        }
+        String result = "";
+        char currChar = (char) start;
+        for(; currChar <= 'Z'; ++currChar) {
+            result = result + currChar;
+        }
+        if(result.length() < 26) {
+            for(currChar = 'A'; result.length() < 26; ++currChar) {
+                result = result + currChar;
+            }
+        }
+        return result;
     }
 }
 
-/* 
-System.out.println("c.");
-- this prints c. then starts a new line
-for (int i = 1; i <= 2; i++) {
-    - this means that everything within the braces will repeat twice after everything inside repeats
-    for (int j = 1; j <= 3; j++) {
-        - this means that everything within this will repeat 3 times after everything inside repeats
-        for (int k = 1; k <= 4; k++) {
-            - this means this will repeat 4 times
-            System.out.print("*");
-            - will print * 4 times then go out
-        }
-        System.out.print("!");
-        - will print ! once then go out
-    }
-    System.out.println();
-    - will make a new line
-}
-System.out.println();
-- will make a new line
-*\
