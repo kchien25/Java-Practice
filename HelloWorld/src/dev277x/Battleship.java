@@ -9,55 +9,40 @@ public class Battleship {
         System.out.println("");
 
     // initializing the map
-        String[][] map = new String[11][16];
-        for (int i = 0; i < 1; i++) {
-            int index = 0;
-            for (int j = 0; j < 16; j++) {
-                if ((j > 2) && (j < 13)) {
-                    String strIndex = Integer.toString(index);
-                    map[i][j] = strIndex;
-                    index++;
-                    System.out.print(map[i][j]);
-                } else {
-                    map[i][j] = " ";
-                    System.out.print(map[i][j]);
-                }
-            }
-            System.out.println();
-        }
+        String[][] map = new String[12][16];
         int rowIndex = 0;
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 16; j++) {
-                if ((j == 0) || (j == 15)) {
-                    String strRowIndex = Integer.toString(rowIndex);
-                    map[i][j] = strRowIndex;
-                    System.out.print(map[i][j]);
-                } else if ((j == 2) || (j == 13)) {
-                    map[i][j] = "|";
-                    System.out.print(map[i][j]);
-                } else {
-                    map[i][j] = " ";
-                    System.out.print(map[i][j]);
+        for (int i = 0; i < 12; i++) {
+            if ((i == 0) || (i == 11)) {
+                int index = 0;
+                for (int j = 0; j < 16; j++) {
+                   if ((j > 2) && (j < 13)) {
+                       String strIndex = Integer.toString(index);
+                       map[i][j] = strIndex;
+                       index++;
+                        System.out.print(map[i][j]);
+                    } else {
+                        map[i][j] = " ";
+                        System.out.print(map[i][j]);
+                    }
                 }
-            }
-            rowIndex++;
-            System.out.println();
-        }
-        for (int i = 10; i < 11; i++) {
-            int index = 0;
-            for (int j = 0; j < 16; j++) {
-                if ((j > 2) && (j < 13)) {
-                    String strIndex = Integer.toString(index);
-                    map[i][j] = strIndex;
-                    index++;
-                    System.out.print(map[i][j]);
-                } else {
-                    map[i][j] = " ";
-                    System.out.print(map[i][j]);
+            } else {
+                for (int j = 0; j < 16; j++) {
+                    if ((j == 0) || (j == 15)) {
+                        String strRowIndex = Integer.toString(rowIndex);
+                        map[i][j] = strRowIndex;
+                        System.out.print(map[i][j]);
+                    } else if ((j == 2) || (j == 13)) {
+                        map[i][j] = "|";
+                        System.out.print(map[i][j]);
+                    } else {
+                        map[i][j] = " ";
+                        System.out.print(map[i][j]);
+                    }
                 }
-            }
-            System.out.println();
-        }
+               rowIndex++;
+           }
+           System.out.println();
+       }
 
     // player setting up their ships
         System.out.println();
@@ -65,6 +50,7 @@ public class Battleship {
         Scanner input = new Scanner(System.in);
         int shipCount = 0;
         while (shipCount < 5) {
+            System.out.println();
             System.out.print("Enter x coordinate for your ship: ");
             int x = input.nextInt();
             x += 3;
@@ -77,28 +63,18 @@ public class Battleship {
             } else {
                 System.out.println("Sorry, that's an invalid position. Please choose again.");
             }
-        }   
+        }
+        System.out.println();   
     }
     public static void printMap(String[][] map) {
         System.out.println();
-        for (int i = 0; i < 1; i++) {
-            int index = 0;
-            for (int j = 0; j < 16; j++) {
-                if ((j > 2) && (j < 13)) {
-                    String strIndex = Integer.toString(index);
-                    map[i][j] = strIndex;
-                    index++;
-                } else {
-                    map[i][j] = " ";
-                }
-            }
-            System.out.println();
-        }
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 16; j++) {
                 System.out.print(map[i][j]);
             }
             System.out.println();
         }
     }
+
+    // computer sets up their ships
 }
