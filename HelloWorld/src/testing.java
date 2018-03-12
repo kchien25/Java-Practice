@@ -2,20 +2,33 @@ import java.util.*;
 
 public class testing {
     public static void main(String[] args) {
-        // greeting the player
-        System.out.println("***** Welcome to Battleship *****");
-        System.out.println("");
-        System.out.println("Right now, the sea is empty.");
-        System.out.println("");
-        ArrayList<String> guessList = new ArrayList<String>();
-        String arrayCheck = "47";
-        int x = 0;
-        while ( x < 5) {
-            guessList.add(arrayCheck);
-            System.out.println(guessList);
-            x++;
+        int[] nums = {1, 2, 3, 4, 5, 6};
+        System.out.print(nums);
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        int index = 0;
+        boolean breakLoop = false;
+        int[] answer = new int[2];
+        while (breakLoop == false) {
+            for (int i = 0; i < nums.length - 1; i++) {
+                if (nums[i] != nums[index]) {
+                    int sum = nums[i] + nums[index];
+                    if (sum == target) {
+                        answer[0] = i;
+                        answer[1] = index;
+                        breakLoop = true;
+                    } else if (index == nums.length - 1) {
+                        index = 0;
+                    } else {
+                        index++;
+                    }
+                } else {
+                    index++;
+                }
+            }
         }
-        System.out.println(guessList.contains(arrayCheck));
+        return answer;
     }
 }
 
